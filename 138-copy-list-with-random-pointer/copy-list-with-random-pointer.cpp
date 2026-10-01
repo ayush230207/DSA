@@ -1,19 +1,3 @@
-/*
-// Definition for a Node.
-class Node {
-public:
-    int val;
-    Node* next;
-    Node* random;
-    
-    Node(int _val) {
-        val = _val;
-        next = NULL;
-        random = NULL;
-    }
-};
-*/
-
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
@@ -25,7 +9,6 @@ public:
         Node* oldTemp=head;
         pointer[oldTemp]= newTemp;
         oldTemp= head->next;
-        
 
         while(oldTemp != NULL){
             Node* copy= new Node(oldTemp->val);
@@ -39,10 +22,13 @@ public:
         newTemp= newHead;
 
         while(oldTemp != NULL){
-            newTemp->random= pointer[oldTemp->random];
+            // Corrected line below:
+            newTemp->random = pointer[oldTemp->random];
+            
             newTemp= newTemp->next;
             oldTemp= oldTemp->next;
         }
+
         return newHead;
     }
 };
